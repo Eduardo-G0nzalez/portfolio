@@ -1,7 +1,24 @@
 {% extends 'base_generic.html' %}
-
+{% load static %}
 {% block content %}
-    <div class="container mt-5">
+<style>
+body {
+    background: url("{% static 'img/imgfondo.png' %}") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+</style>
+    <div class="container mt-5 text-white">
+        <a href="{% url 'index' %}" class="btn btn-secondary back-button">Volver a Inicio</a>
         <h2>¡Gracias por tu mensaje!</h2>
         <p>Nos pondremos en contacto contigo pronto.</p>
     </div>

@@ -11,8 +11,14 @@
         align-items: center;
         justify-content: center;
     }
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
 </style>
     <div class="container mt-5">
+        <a href="{% url 'index' %}" class="btn btn-secondary back-button">Volver a Inicio</a>
         <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
                 <h2 class="text-center text-white mb-4">{{ proyecto.titulo }}</h2>

@@ -68,18 +68,7 @@ body {
     display: block;
     margin: 0 auto;
 }
-@media (min-width: 576px) {
-    .card-container .card-wrapper {
-        flex: 1 1 calc(50% - 1rem);
-        max-width: calc(50% - 1rem);
-    }
-}
-@media (min-width: 768px) {
-    .card-container .card-wrapper {
-        flex: 1 1 calc(33.333% - 1rem);
-        max-width: calc(33.333% - 1rem);
-    }
-}
+
 @media (max-width: 576px) {
     .logosweb {
         max-width: 70%;
@@ -112,33 +101,52 @@ body {
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark nav">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src='{% static "img/logoblanco.png" %}' alt="logo portafolio"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#primeraventana">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sobremi">Sobre mí</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Habilidades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contacto</a>
-                    </li>
-                </ul>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Navbar with User Dropdown</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark nav">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src='{% static "img/logoblanco.png" %}' alt="logo portafolio"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#primeraventana">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sobremi">Sobre mí</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Habilidades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contacto</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'img/logouser.png' %}" alt="Usuario" style="width: 30px; height: 30px;">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li>
+                                <li><a class="dropdown-item" href="{% url 'register' %}">Registrarse</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
     <!-- Hero Section -->
     <section id="primeraventana">
@@ -235,7 +243,7 @@ body {
                             <p class="card-text">{{ proyecto.descripcion }}</p>
                             <a href="{{ proyecto.link_sitio }}" class="btn btn-primary m-1" target="_blank">Ver sitio web</a>
                             <a href="{{ proyecto.link_repositorio }}" class="btn btn-primary m-1" target="_blank">Ver repositorio</a>
-                            <a href="{% url 'proyecto_detalle' proyecto.pk %}" class="btn btn-primary m-1" target="_blank">Ver detalle</a>
+                            <a href="{% url 'proyecto_detalle' proyecto.pk %}" class="btn btn-primary m-1">Ver detalle</a>
                         </div></center>
                     </div></center>
                 </div>
@@ -271,6 +279,10 @@ body {
     </section>
 
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     {% bootstrap_javascript %}
 </body>
 </html>

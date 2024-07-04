@@ -14,4 +14,5 @@ urlpatterns = [
     path('vista_protegida/', views.vista_protegida, name='vista_protegida'),
     path('proyecto/<int:pk>/', views.proyecto_detalle, name='proyecto_detalle'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('registro/', views.register, name='register'),
 ]   

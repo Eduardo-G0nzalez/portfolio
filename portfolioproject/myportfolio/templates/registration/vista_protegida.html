@@ -18,6 +18,9 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
+    .btn-index {
+        margin-top: 20px;
+    }
 </style>
 
 <div class="container">
@@ -25,11 +28,11 @@
         <div class="col-md-6">
             <div class="card text-white">
                 <div class="card-header text-center">
-                    <h2>Vista Protegida</h2>
+                    <h2>Ha iniciado sesión correctamente</h2>
                 </div>
                 <div class="card-body">
-                        <h4>Solo los usuarios autenticados pueden ver esta página</h4>
-                    </form>
+                    <h4>Solo los usuarios registrados pueden ver esta página</h4>
+                    <center><a href="{% url 'index' %}" class="btn btn-primary btn-index">Ir al inicio</a></center>
                 </div>
             </div>
         </div>

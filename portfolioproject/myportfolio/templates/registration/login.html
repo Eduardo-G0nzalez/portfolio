@@ -18,26 +18,33 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
+    .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
 </style>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card text-white">
-                    <div class="card-header text-center">
-                        <h2>Iniciar Sesión</h2>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <br>
-                            {{ form.as_p }}
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
-                            </div>
-                        </form>
-                    </div>
+
+<div class="container">
+    <a href="{% url 'index' %}" class="btn btn-secondary back-button">Volver a Inicio</a>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-white">
+                <div class="card-header text-center">
+                    <h2>Iniciar Sesión</h2>
                 </div>
+                <center><div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <br>
+                        {{ form.as_p }}
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                        </div>
+                    </form>
+                </div></center>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

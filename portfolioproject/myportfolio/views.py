@@ -1,4 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
+from django.contrib.auth import login
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ContactoForm
 from .models import Proyecto, Contacto
@@ -55,3 +58,14 @@ def vista_protegida(request):
 def proyecto_detalle(request, pk):
     proyecto = get_object_or_404(Proyecto, pk=pk)
     return render(request, 'proyecto_detalle.html', {'proyecto': proyecto})
+
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'registration/registro.html', {'form': form})

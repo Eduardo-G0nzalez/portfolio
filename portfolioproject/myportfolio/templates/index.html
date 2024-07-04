@@ -1,0 +1,276 @@
+{% load static %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    {% bootstrap_css %}
+    <link rel='stylesheet'  href="{% static 'css/styles.css' %}" type="text/css" media="all"/>
+    <style>
+body {
+    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+}
+.nav {
+    background-color: #343a40;
+}
+.nav-link {
+    font-size: 1.2rem;
+    color: #ffffff !important;
+}
+#primeraventana {
+    height: 100vh;
+    background: url("{% static 'img/imgfondo.png' %}") no-repeat center center/cover;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card-title {
+    font-weight: bold;
+}
+.footer {
+    background-color: #253342;
+    color: #ffffff;
+}
+.footer a {
+    color: #ffffff;
+}
+.btn-primary {
+    background-color: #0069d9;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.fotoperfil {
+    background-color: #253342;
+}
+.logoduoc{
+    width: 30%;
+    height: 30%;
+}
+.logosweb {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+@media (min-width: 576px) {
+    .card-container .card-wrapper {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+}
+@media (min-width: 768px) {
+    .card-container .card-wrapper {
+        flex: 1 1 calc(33.333% - 1rem);
+        max-width: calc(33.333% - 1rem);
+    }
+}
+@media (max-width: 576px) {
+    .logosweb {
+        max-width: 70%;
+    }
+    .card-container .card-wrapper {
+        flex: 1 1 calc(100% - 1rem);
+        max-width: calc(100% - 1rem);
+    }
+    #skills h2, #projects h2 {
+        font-size: 1.5rem;
+    }
+    #skills .card-body, #projects .card-body {
+        padding: 0.5rem;
+    }
+    .card img {
+        height: auto;
+        max-height: 150px;
+    }
+    #projects .row, #skills .row {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    #projects .col-md-4, #skills .col-md-4 {
+        flex: 0 0 auto;
+        max-width: 33.333%;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src='{% static "img/logoblanco.png" %}' alt="logo portafolio"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#primeraventana">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobremi">Sobre mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="primeraventana">
+        <div class="container">
+            <h1 class="display-4">Bienvenidos a mi portafolio</h1>
+        </div>
+    </section>
+
+<!-- Sobre mi -->
+    <section id="sobremi" class="py-5">
+        <div class="container">
+            <center><h2> Sobre mí </h2></center>
+            <br>
+            <div class="card">
+                <div class="card-body d-flex flex-column flex-md-row align-items-center">
+                    <img src='{% static "img/fotoperfil.jpeg" %}' alt="fotoperfil" class="fotoperfil me-0 me-md-4 mb-3 mb-md-0">
+                    <div>
+                        <p class="text-center"><strong>Mi nombre es Eduardo González, soy estudiante de Ingeniería en Informática de segundo año en DuocUC en la sede Puerto Montt</strong></p>
+                        <div class="text-center">
+                            <br><br><br><br>
+                            <img src='{% static "img/logoduoc.png" %}' alt="logo duoc uc" class="logoduoc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Habilidades</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <img src='{% static "img/logohtml1.png" %}' alt="logo html" class="logosweb">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <img src='{% static "img/logojs1.png" %}' alt="logo javascript" class="logosweb">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <img src='{% static "img/logocss1.png" %}' alt="logo css" class="logosweb">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <img src='{% static "img/logosql1.png" %}' alt="logo sql" class="logosweb">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <img src='{% static "img/logojava1.png" %}' alt="logo java" class="logosweb">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <img src='{% static "img/logopython1.png" %}' alt="logo css" class="logosweb">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Proyectos</h2>
+            <div class="row">
+                {% for proyecto in proyectos %}
+                <div class="col-md-4 mb-4">
+                    <center><div class="card h-100">
+                        <img src="{{ proyecto.imagen.url }}" class="card-img-top" alt="{{ proyecto.titulo }}">
+                        <center><div class="card-body">
+                            <h5 class="card-title">{{ proyecto.titulo }}</h5>
+                            <p class="card-text">{{ proyecto.descripcion }}</p>
+                            <a href="{{ proyecto.link_sitio }}" class="btn btn-primary m-1" target="_blank">Ver sitio web</a>
+                            <a href="{{ proyecto.link_repositorio }}" class="btn btn-primary m-1" target="_blank">Ver repositorio</a>
+                            <a href="{% url 'proyecto_detalle' proyecto.pk %}" class="btn btn-primary m-1" target="_blank">Ver detalle</a>
+                        </div></center>
+                    </div></center>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 footer">
+        <div class="container">
+            <h2 class="text-center">Contáctame</h2>
+            <form method="POST" action="{% url 'contacto_nuevo' %}" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="id_nombre" name="nombre" required>
+                    <div class="invalid-feedback">Por favor ingresa un nombre.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="id_email" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="id_email" name="email" required>
+                    <div class="invalid-feedback">Por favor ingresa un correo.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="id_mensaje" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="id_mensaje" name="mensaje" rows="3" required></textarea>
+                    <div class="invalid-feedback">Por favor ingresa un mensaje.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    {% bootstrap_javascript %}
+</body>
+</html>

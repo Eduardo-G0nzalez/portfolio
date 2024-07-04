@@ -1,0 +1,38 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background: url("{% static 'img/imgfondo.png' %}") no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        background-color: #343A40;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-white">
+                <div class="card-header text-center">
+                    <h2>Vista Protegida</h2>
+                </div>
+                <div class="card-body">
+                        <h4>Solo los usuarios autenticados pueden ver esta página</h4>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

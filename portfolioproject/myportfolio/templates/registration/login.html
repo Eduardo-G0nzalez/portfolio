@@ -1,0 +1,42 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background: url("{% static 'img/imgfondo.png' %}") no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        background-color: #343A40;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-white">
+                    <div class="card-header text-center">
+                        <h2>Iniciar Sesión</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background: url("{% static 'img/imgfondo.png' %}") no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                <h2 class="text-center text-white mb-4">{{ proyecto.titulo }}</h2>
+
+                <!-- Bootstrap Carousel -->
+                <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        {% for i in proyecto.imagenes_set1.all %}
+                            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+                        {% endfor %}
+                        {% for i in proyecto.imagenes_set2.all %}
+                            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="{{ forloop.counter0|add:proyecto.imagenes_set1.count }}" class="{% if proyecto.imagenes_set1.count == 0 and forloop.first %}active{% endif %}" aria-label="Slide {{ forloop.counter|add:proyecto.imagenes_set1.count }}"></button>
+                        {% endfor %}
+                        {% for i in proyecto.imagenes_set3.all %}
+                            <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="{{ forloop.counter0|add:proyecto.imagenes_set1.count|add:proyecto.imagenes_set2.count }}" class="{% if proyecto.imagenes_set1.count == 0 and proyecto.imagenes_set2.count == 0 and forloop.first %}active{% endif %}" aria-label="Slide {{ forloop.counter|add:proyecto.imagenes_set1.count|add:proyecto.imagenes_set2.count }}"></button>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {% for imagen in proyecto.imagenes_set1.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ imagen.imagen.url }}" class="d-block w-100" alt="Imagen set1 de {{ proyecto.titulo }}">
+                            </div>
+                        {% endfor %}
+                        {% for imagen in proyecto.imagenes_set2.all %}
+                            <div class="carousel-item {% if proyecto.imagenes_set1.count == 0 and forloop.first %}active{% endif %}">
+                                <img src="{{ imagen.imagen.url }}" class="d-block w-100" alt="Imagen set2 de {{ proyecto.titulo }}">
+                            </div>
+                        {% endfor %}
+                        {% for imagen in proyecto.imagenes_set3.all %}
+                            <div class="carousel-item {% if proyecto.imagenes_set1.count == 0 and proyecto.imagenes_set2.count == 0 and forloop.first %}active{% endif %}">
+                                <img src="{{ imagen.imagen.url }}" class="d-block w-100" alt="Imagen set3 de {{ proyecto.titulo }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <div class="mt-4 text-white">
+                    <p><strong>Descripción: </strong>{{ proyecto.descripcion }}</p>
+                    <h3>Contenido Detallado</h3>
+                    <div>{{ proyecto.contenido|safe }}</div> 
+                    <p class="mt-4"><strong>Tecnologías:</strong> {{ proyecto.tecnologias.all|join:", " }}</p>
+                </div>
+                <div class="mt-4 d-flex justify-content-center">
+                    <a href="{{ proyecto.link_sitio }}" class="btn btn-primary mx-2">Sitio Web</a>
+                    <a href="{{ proyecto.link_repositorio }}" class="btn btn-secondary mx-2">Repositorio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
